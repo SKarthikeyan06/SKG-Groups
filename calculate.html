@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2019/06/19/15/41/calculator-4285211_960_720.png">
+</head>
+<body onload="username()">
+    <script src="calculate.js"></script>
+    <link rel="stylesheet" href="calculate_rate.css">
+    <h1 id="us">Welcome</h1>
+    <ul>
+        <li><a class="active" href="Main_Menu.html">Home</a></li>
+        <li><a href="Database.html">Go to Database</a></li>
+        <li><a href="calculate.html">Calculate</a></li>
+        <li><a href="#" onclick="data_search()">Search Data</a></li>
+    </ul>
+    <h1 id="invite">உ<br>Welcome<br><strong>SKG Group</strong></h1>
+    <form id="form">
+        <label id="s1">Enter the Loan Number:</label>
+        <input type="text" id="number" autocomplete="off" placeholder="Loan Number">
+        <label id="s2">Enter the Amount:</label>
+        <input type="number" id="amount" autocomplete="off" placeholder="Amount">
+        <label id="s3">Enter the Date:</label>
+        <input type="text" id="date" oninput="formatDate(this)" autocomplete="off" placeholder="Loan Date">
+        <select id="rate">
+            <option id="opt">Gold
+            <option id="opt1">Silver
+            <option id="note">Note
+            </option>
+        </select>
+        <button type="button" onclick="fetchData()" id="gd">Get Data</button>
+        <button type="button" onclick="calculate()" id="ca">Calculate</button>
+        <button type="reset" id="cda">Clear Data</button>
+        <div id="rect">
+        <h1 id="result">"Click"<br>Calculate</h1>
+        </div>
+    </form>
+</body>
+</html>
