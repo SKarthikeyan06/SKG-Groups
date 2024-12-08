@@ -128,6 +128,7 @@ but.addEventListener('click', e => {
         if (!value==""){
         product_from=value;}
         else{
+          product_from="Please Selected";
           alert("Product is not added in Cart\nPlease Ensure that.");
         }
       }
@@ -137,6 +138,7 @@ but.addEventListener('click', e => {
         address_from=value;}
         else
         {
+          address_from="Please Selected";
           alert("Address is not Selected\nPlease Ensure that.");
         }
       }
@@ -221,6 +223,7 @@ const value=data.forEach(row=>{
     var searchno=document.getElementById('searchno').value;
     if (searchno==tempno)
     {
+      console.log(row[5].split("/O"));
       gname=row[5].split("/O");
       if (gname.length!=1){
       if ('S'.includes(gname[0][gname[0].length-1])){
@@ -251,20 +254,13 @@ const value=data.forEach(row=>{
     else
       {
         so=gname[0].split(" ");
-        sq=so.slice(0,-3);
-        var te="",te1="";
-        for (i in sq)
-        {
-          te+=sq[i];
-        }
-        te=te.trim();
-        sq1=so.slice(-3)
-        for (u in sq1)
-        {
-          te1+=sq1[u];
-        }
-        te1=te1.trim();
-        document.getElementById("inputText").value=te;
+        sq=so.slice(0,so.length-1);
+        var te1="",sq1="";
+        for (s in sq){
+        sq1+=String(sq[s]).replace(",","");}
+        for (i=so.length-1;i<so.length;i++)
+          te1+=so[i];
+        document.getElementById("inputText").value=sq1;
         document.getElementById("address").value=row[6];
         document.getElementById("sur").value=te1;
         document.getElementById("other").selected=true;
