@@ -73,7 +73,7 @@ function calculate(){
 }
 function calculateMonthsDifference(dateString) {
     const date1 = new Date();
-    const date2 = new Date(dateString.split('-').reverse().join('-'));
+    const date2 = new Date(dateString.split('/').reverse().join('-'));
     let monthsDiff = (date2.getFullYear() - date1.getFullYear()) * 12 + (date2.getMonth() - date1.getMonth());
     monthsDiff = Math.abs(monthsDiff);
     const dayDiff = date2.getDate() - date1.getDate();

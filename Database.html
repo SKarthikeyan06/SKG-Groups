@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Entry</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2016/11/13/04/52/statistic-1820320_640.png">
 </head>
 <body onload="fetchData_num();username()">
@@ -21,13 +23,9 @@
         <label id="ln">Enter Loan Number:</label>
         <input placeholder="Loan Number" required name="Number" id="num" autocomplete="off" >
         <label id="ld">Enter Loan Date:</label>
-        <input type="number" placeholder="Date" required name="LDate" id="ldate" autocomplete="off" >
+        <input type="text" placeholder="Date" required name="LDate" id="ldate" autocomplete="off" >
         <label id="la">Enter Loan Amount:</label>
         <input type="text" placeholder="Amount" required name="Amount" id="amount" autocomplete="off">
-        <label id="rd">Enter Release Date:</label>
-        <input placeholder="Release Date"  name="RDate" id="rdate" autocomplete="off" >
-        <label id="ir">Enter Interest Received:</label>
-        <input type="number" placeholder="Interest Received"  name="IntR" id="intr" autocomplete="off" >
         <label id="lname">Enter Name:</label>
         <input placeholder="Name" required name="Name" id="inputText" autocomplete="off" >
         <label id="lgua">Select Guadrian:</label>
@@ -39,6 +37,9 @@
         </select>
         <label id="lsur">Enter Surname:</label>
         <input placeholder="Surname" required name="SurName" id="sur" autocomplete="off" >
+        <label id="laddress">Select Address:</label>
+        <input id="address" placeholder="Address" list="names1" name="Address" oninput="myGeeks()" autocomplete="off" />
+        <datalist id="names1" multiple></datalist>
         <label id="lgua">Select Category:</label>
         <select name="Option" id="opt">
             <option selected>பவுன்</option>
@@ -47,19 +48,21 @@
         <label id="lproduct">Select Product:</label>
         <input id ="product" placeholder="Product" list="names" oninput="myGeeks()" autocomplete="off" />
         <datalist id="names" multiple></datalist>
-        <label id="laddress">Select Address:</label>
-        <input id="address" placeholder="Address" list="names1" name="Address" oninput="myGeeks()" autocomplete="off" />
-        <datalist id="names1" multiple></datalist>
         <label id="lnop">Enter Number of Pieces:</label>
         <input type="number" placeholder="NOP" required name="NOP" id="nop" autocomplete="off" >
         <label id="lweight">Enter Weight:</label>
         <input type="number" placeholder="Weight" required name="Weight" id="weight" autocomplete="off" >
+        <label id="rd">Enter Release Date:</label>
+        <input placeholder="Release Date"  name="RDate" id="rdate" autocomplete="off" >
+        <label id="ir">Enter Interest Received:</label>
+        <input type="number" placeholder="Interest Received"  name="IntR" id="intr" autocomplete="off" >
         <label id="req">Enter the Number to Request the Data:</label>
         <input placeholder="Loan Number to Refer" id="searchno" autocomplete="off" >
         <textarea name="Product" id="cart" placeholder="Your Products in Cart" autocomplete="off" wrap="hard"></textarea>
     </form>
     <script>
         const input = document.getElementById('amount');
+        const reld= document.getElementById('rdate');
         input.addEventListener('input', () => {
           let value = input.value.replace(/[^0-9]/g, '');
           if (value) {
@@ -68,7 +71,16 @@
             input.value = ''; 
           }
           const position = value.length;
-          input.setSelectionRange(position, position);
+          input.setSelectionRange(position, position);})
+        reld.addEventListener('input', () => {
+            let value = reld.value.replace(/[^0-9,^/-]/g, '');
+            if (value) {
+              reld.value =`'${value}`;
+            } else {
+              reld.value = ''; 
+            }
+        const position = reld.value.length;
+        reld.setSelectionRange(position, position);
         });
       
     </script>

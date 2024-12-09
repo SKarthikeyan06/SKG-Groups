@@ -32,6 +32,11 @@ document.getElementById("login").addEventListener("click",(event)=>
     response=2;
   }
   if (response==1) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Notification',
+        html: 'Password Correct<br>Waiting for Permission<br>Please Wait',
+      });
       fetchData();
       responseMessage.textContent = 'Password and Username Matched Please Wait for Permission!';
       responseMessage.style.color = 'green';
@@ -48,6 +53,11 @@ document.getElementById("login").addEventListener("click",(event)=>
   }
   else {
       login.disabled = false;
+      Swal.fire({
+        icon: 'warning',
+        title: 'Notification',
+        html: 'Password InCorrect<br>Please Try Again',
+      });
       responseMessage.textContent = 'Oops! There was a problem with our password and username.';
       responseMessage.style.color = 'red';
       responseMessage.style.fontFamily="Arial";

@@ -30,6 +30,7 @@ async function translateToTamil() {
         r1=data1.responseData.translatedText;
         r=r.slice(0,-2)
         r1=r1.slice(0,-2)
+        console.log(r,r1);
         if (inputText1==" 10")
         {
           document.getElementById("inputText").value = r||"Translation failed!";
@@ -101,7 +102,7 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
     }
   });
 const but=document.getElementById('sub')
-but.addEventListener('click', e => {
+but.addEventListener('click', async function(e) {
     e.preventDefault()
     const form = document.forms['submit-to-google-sheet'];
     const formData = new FormData(form);
@@ -129,7 +130,12 @@ but.addEventListener('click', e => {
         product_from=value;}
         else{
           product_from="Please Selected";
-          alert("Product is not added in Cart\nPlease Ensure that.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Product is Not Found',
+            text: 'Product is not Selected\nPlease Ensure that.',
+          });
+          return;
         }
       }
       if (key=="Address")
@@ -139,7 +145,12 @@ but.addEventListener('click', e => {
         else
         {
           address_from="Please Selected";
-          alert("Address is not Selected\nPlease Ensure that.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Address is not Found',
+            text: 'Address is not Selected\nPlease Ensure that.',
+          });
+          return;
         }
       }
       if (key=="Option")
@@ -147,28 +158,35 @@ but.addEventListener('click', e => {
         option_from=value;
       }
   }
-  var dec=confirm(`
-    Loan Number : ${number_from}
-    Name : ${name_from} ${gua_from} ${surname_from}
-    Product : ${option_from}  ${product_from}
-    Address : ${address_from}
-    is correct .
-    'Are you Ensure that product is in your Cart ?'`);
-  if(dec){
+  const  result =await Swal.fire({
+      title: 'Confirm Save',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#30d65c',
+      cancelButtonColor: '#ed82a2',
+      confirmButtonText: 'Correct & Save it',
+      cancelButtonText: 'Cancel',  
+      html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+" "+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>is Correct ?</p>',
+})
+  if(result){
     fetch(scriptURL, { mode:'no-cors',method: 'POST', body: new FormData(form)})
-        .then(response => console.log("Success"),alert(`
-          Loan Number : ${number_from}  
-          Name : ${name_from} ${gua_from} ${surname_from}
-          Product : ${option_from}  ${product_from}
-          Address : ${address_from}
-          is added  Success added Data`))
-        .catch(error => console.error('Error!', error.message))
+        .then(response => {console.log("Okay");
         document.contact-form.reset();
-        location.reload();
+        location.reload();})
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            html: '<p style="text-align:left;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+" "+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>is Saved Successfully</p>',
+        })
+        .catch(error => console.error('Error!', error.message))
   }
   else
   {
-    alert("Please Be Careful\nOtherwise We didn't Responsible for that\nLook Attention.");
+    Swal.fire({
+      icon: 'alert',
+      title: 'Please Be Careful',
+      text: 'The Loan Number '+number_from+' was not saved.!!Try Again',
+    });
   }
 })
 async function fetchData() {
@@ -212,7 +230,7 @@ else
 function displayData(data) {
 const number=data[data.length-1][0];
 generate(number);
-document.getElementById("ldate").value=data[data.length-1][1];
+document.getElementById("ldate").value="\'"+data[data.length-1][1];
 }
 function displayData1(data) {
 let stopLoop = false;
@@ -298,8 +316,19 @@ function displayDatapermission(data) {
           const port_n = localStorage.getItem('port');
           if (permission!="Allow "+port_n)
           {
-            alert("Don't Cheat\nYour Not allowed to Add data Now\nBecause any one\nhaving login permission\nAfter Logout him you will able to add");
-            window.location.href="Main_Menu.html"; 
+            console.log(permission);
+            if(permission=="Allow"){
+              eus="Go to Login Page and Login with Write to Write";
+            }
+            else{
+              eus=permission.slice(6);
+            }
+            Swal.fire({
+              icon: 'warning',
+              title: 'Don\'t Cheat',
+              html: 'You are not allowed to add data now.<br><strong>'+eus+"</strong> having permission to write<br>Please Wait until they logout.",
+            });
+            setTimeout(() => window.location.href="Main_Menu.html" , 8000);
           }
           stopLoop = true;
           return;
