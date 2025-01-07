@@ -68,6 +68,15 @@ body{
         flex-wrap: wrap;
         overflow: auto;
     }
+    .container
+    {
+        margin-bottom: 12px;
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
     #fo label, #fo input, #fo select, #fo button ,#con{
         max-width: 100%;
         font-size :18px;
