@@ -48,27 +48,34 @@ body{
     font-size: 24px;
     font-weight: bold;
 }
-@media (max-width: 600px) {
-    .container {
-        min-width: 280px;
+#cre
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+    font-style: italic;
+    margin-left:600px;
+    color:rgb(72, 46, 198);
+}
+@media (max-width: 600px) { 
+    #cre
+    {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: larger;
+        font-weight: bolder;
+        font-style: italic;
+        margin-left:100px;
+        color:rgb(72, 46, 198);
     }
     #god
     {
         font-family: 'Courier New', Courier, monospace;
         text-align: center;
-        font-size: 10px;
+        font-size: 20px;
         font-weight: bold;
         color:#c20a28;    
     }
-    #fo {
-        margin-bottom: 12px;
-        width: 100%;
-        justify-content: space-between;
-        display: flex;
-        flex-wrap: wrap;
-        overflow: auto;
-    }
-    .container
+    .container,#fo
     {
         margin-bottom: 12px;
         width: 100%;
@@ -77,16 +84,7 @@ body{
         flex-wrap: wrap;
         overflow: auto;
     }
-    #fo label, #fo input, #fo select, #fo button ,#con{
-        max-width: 100%;
-        font-size :18px;
-    }
-    #fo input
-    {
-        font-size: 18px;
-    }
-    #s1, #s2, #login,#s3,#op11,#mode
-    {
+    #fo input, #fo select, #fo button ,#con{
         font-size :18px;
     }
 }

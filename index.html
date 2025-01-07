@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2021/11/18/11/35/attack-6806140_1280.png">
     <title>Login Page</title>
 </head>
@@ -15,20 +14,18 @@
     <h1 id="god">உ<br>ஸ்ரீ மாணிக்க விநாயகர் துணை</h1>
     <div class="container">
     <form id="fo" name="submit-to-google-sheet">
-        <label id="s1"><i class="fa-solid fa-user"></i> Enter the User Name:</label>
         <input placeholder="User Name" name="Username" id="usname" autocomplete="off">
-        <label id="s2"><i class="fa-solid fa-lock"></i> Enter the Password:</label>
         <input type="password" placeholder="Password" name="password" id="pass">
-        <label id="op11"><i class="fa-solid fa-list"></i> Select the Mode to Continue:</label>
         <select id="mode" name="Purpose">
             <option>Write</option>
             <option>Read</option>
             <option>Calculate</option>
         </select>
         <div id="con"><input type="checkbox" onclick="show()" id="res">Show Password</div>
-        <button type="button" id="login" onclick="f()"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</button>
+        <button type="button" id="login" onclick="f()">Login</button>
         <h1 id="responseMessage"></h1>
     </form>
     </div>
+    <h2 id="cre">Developed By SKG Groups.</h2>
 </body>
 </html>
