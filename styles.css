@@ -20,7 +20,7 @@ body{
     border-width:thick;
 }
 #cart{
-    border-color:#0e17c2;
+    border-color:blue;
     border-width:thick;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 30px;
@@ -57,31 +57,84 @@ body{
     margin-top: 10px;
     margin-left: 50px;
 }
-ul {
+.logo{
+    color: #0b0000;
+}
+nav ul{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background-color: aquamarine;
+  }
+nav ul li{
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: relative;
-    top: 10;
-    width: 100%;
+    background-color: aquamarine;
   }
-li {
-    float: left;
-}
-li a {
-    font-family: 'Times New Roman';
-    font-size: 25px;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
+nav ul li a{
     text-decoration: none;
+    color: #0b0000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: larger;
+    background-color: aquamarine;
+  }
+.menu-icon i{
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #0b0000;
+    font-size: 30px;
 }
-li a:hover:not(.active) {
-    background-color: #111;
-  }
-.active {
-    background-color: #04AA6D;
-  }
+@media (max-width:600px) {
+    nav ul{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        overflow: hidden;
+    }
+    nav ul li{
+        padding: 20px;
+        padding-top: 0;
+    }
+    .menu-icon{
+        display: block;
+    }
+    #menuList{
+        transition: all 0.5s;
+    }
+}
+@media (max-width: 600px) {
+    #invite,#us{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        font-weight:bold;
+        text-align: center;
+        color: red;
+    }
+    #container{
+        min-width: 280px;
+        padding: 15px;
+    }
+    #fo label, #fo input, #fo select, #fo button{
+        max-width: 100%;
+        font-size :25px;
+    }
+    #cart
+    {
+        max-width: 80%;
+        font-size :25px;
+    }
+    #opt,#gua
+    {
+        text-align: center;
+        font-weight: bolder;
+        width: 400px;
+    }
+    #fo input
+    {
+        font-size: 25px;
+    }
+}

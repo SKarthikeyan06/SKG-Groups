@@ -168,6 +168,7 @@ but.addEventListener('click', async function(e) {
       cancelButtonText: 'Cancel',  
       html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+" "+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>is Correct ?</p>',
 })
+  console.log("Result:"+result);
   if(result){
     fetch(scriptURL, { mode:'no-cors',method: 'POST', body: new FormData(form)})
         .then(response => {console.log("Okay");
@@ -264,7 +265,7 @@ const value=data.forEach(row=>{
       so=row[5].split(" ");
       document.getElementById("inputText").value=so[0];
       document.getElementById("address").value=row[6];
-      document.getElementById("sur").value="";
+      document.getElementById("sur").value=String(so.slice(1)).replace(",","");;
       document.getElementById("other").selected=true;
       stopLoop = true;
       return;

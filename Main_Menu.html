@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2013/03/29/13/39/home-97609_640.png">
@@ -11,18 +12,35 @@
 <body onload="username()">
     <script src="main_java.js"></script>
     <link rel="stylesheet" href="main_css.css">
-    <ul>
-    <li><a class="active" href="Main_Menu.html">Home</a></li>
-    <li><a href="Database.html">Go to Database</a></li>
-    <li><a href="calculate.html">Calculate</a></li>
-    <li><a href="#" onclick="data_search()">Search Data</a></li>
-    <li><a href="test.html">Feedback or Query</a></li>
-    <li><a href="index.html" onclick="logout_page()">Logout</a></li>
-    </ul>
+    <nav>
+        <div class="logo">
+            <h1>SKG</h1>
+        </div>
+        <ul id="menuList">
+            <li><a class="active" href="Main_Menu.html">Home</a></li>
+            <li><a href="Database.html">Go to Database</a></li>
+            <li><a href="calculate.html">Calculate</a></li>
+            <li><a href="#" onclick="data_search()">Search Data</a></li>
+            <li><a href="index.html" onclick="logout_page()">Logout</a></li>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
     <h1 id="us">Welcome</h1>
-    <h1 id="info"><strong>Logout is Mandantory</strong><br>So Don't Forget to logout after Added Data<br>otherwise 'Database' is locked</h1>
-    <footer>
-        <p>Created by <strong>SKG Groups</strong>.<br> © 2024 All rights reserved.</p>
-    </footer>
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
 </body>
 </html>
