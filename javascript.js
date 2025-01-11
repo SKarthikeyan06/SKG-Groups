@@ -157,6 +157,10 @@ but.addEventListener('click', async function(e) {
       {
         option_from=value;
       }
+      if (key=="LDate")
+      {
+        date_from=value;
+      }
   }
   const  result =await Swal.fire({
       title: 'Confirm Save',
@@ -166,10 +170,9 @@ but.addEventListener('click', async function(e) {
       cancelButtonColor: '#ed82a2',
       confirmButtonText: 'Correct & Save it',
       cancelButtonText: 'Cancel',  
-      html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+" "+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>is Correct ?</p>',
+      html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+""+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>Loan Date : '+date_from+'<br>is Correct ?</p>',
 })
-  console.log("Result:"+result.displayDatapermission);
-  if(result){
+  if(result.isConfirmed){
     fetch(scriptURL, { mode:'no-cors',method: 'POST', body: new FormData(form)})
         .then(response => {console.log("Okay");
         document.contact-form.reset();
@@ -177,7 +180,7 @@ but.addEventListener('click', async function(e) {
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            html: '<p style="text-align:left;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+" "+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>is Saved Successfully</p>',
+            html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+""+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>Loan Date : '+date_from+'<br>is Saved Successfully !</p>',
         })
         .catch(error => console.error('Error!', error.message))
   }
