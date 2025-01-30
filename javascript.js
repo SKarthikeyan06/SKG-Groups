@@ -102,7 +102,7 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
     }
   });
 document.onkeyup = function(e) {
-  if (e.ctrlKey && e.which==66)
+  if (e.ctrlKey && e.altKey && e.shiftKey && e.key == 'B')
   {
     alert("Welcome");
     data_save();
