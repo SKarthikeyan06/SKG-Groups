@@ -95,18 +95,6 @@ function myGeeks() {
       datalist1.appendChild(opt);
     }
 }
-document.getElementById('fo').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      alert("Don't Press Enter");
-    }
-    else if (event.ctrlKey && event.key === 'B' )
-    {
-      event.preventDefault();
-      alert("Welcome");
-      data_save();
-    }
-});
 async function data_save(e) {
   e.preventDefault()
   const form = document.forms['submit-to-google-sheet'];
@@ -198,6 +186,18 @@ else
   });
 }
 }
+document.getElementById('fo').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    alert("Don't Press Enter");
+  }
+  else if (event.ctrlKey && event.key === 'B' )
+  {
+    event.preventDefault();
+    alert("Welcome");
+    data_save();
+  }
+});
 const but=document.getElementById('sub')
 but.addEventListener('click',data_save())
 async function fetchData() {
