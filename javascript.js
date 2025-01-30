@@ -107,9 +107,8 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
       data_save();
     }
 });
-function data_save(){
 const but=document.getElementById('sub')
-but.addEventListener('click', async function(e) {
+but.addEventListener('click', async function data_save(e) {
     e.preventDefault()
     const form = document.forms['submit-to-google-sheet'];
     const formData = new FormData(form);
@@ -199,8 +198,7 @@ but.addEventListener('click', async function(e) {
       text: 'The Loan Number '+number_from+' was not saved.!!Try Again',
     });
   }
-})}
-data_save();
+})
 async function fetchData() {
   const response = await fetch(`${scriptURL}?type=json`);
   const data = await response.json();
