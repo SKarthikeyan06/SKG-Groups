@@ -107,98 +107,99 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
       data_save();
     }
 });
-const but=document.getElementById('sub')
-but.addEventListener('click', async function data_save(e) {
-    e.preventDefault()
-    const form = document.forms['submit-to-google-sheet'];
-    const formData = new FormData(form);
-    let number_from;
-    for (let [key, value] of formData.entries()) {
-      if (key=="Number")
-      {
-        number_from=value;
-      }
-      if (key=="Name")
-      {
-        name_from=value;
-      }
-      if (key=="Gua")
-      {
-          gua_from=value;
-      }
-      if (key=="SurName")
-      {
-          surname_from=value;
-      }
-      if (key=="Product")
-      {
-        if (!value==""){
-        product_from=value;}
-        else{
-          product_from="Please Selected";
-          Swal.fire({
-            icon: 'error',
-            title: 'Product is Not Found',
-            text: 'Product is not Selected\nPlease Ensure that.',
-          });
-          return;
-        }
-      }
-      if (key=="Address")
-      {
-        if (!value==""){
-        address_from=value;}
-        else
-        {
-          address_from="Please Selected";
-          Swal.fire({
-            icon: 'error',
-            title: 'Address is not Found',
-            text: 'Address is not Selected\nPlease Ensure that.',
-          });
-          return;
-        }
-      }
-      if (key=="Option")
-      {
-        option_from=value;
-      }
-      if (key=="LDate")
-      {
-        date_from=value;
-      }
-  }
-  const  result =await Swal.fire({
-      title: 'Confirm Save',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#30d65c',
-      cancelButtonColor: '#ed82a2',
-      confirmButtonText: 'Correct & Save it',
-      cancelButtonText: 'Cancel',  
-      html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+""+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>Loan Date : '+date_from+'<br>is Correct ?</p>',
-})
-  if(result.isConfirmed){
-    fetch(scriptURL, { mode:'no-cors',method: 'POST', body: new FormData(form)})
-        .then(response => {console.log("Okay");
-        document.contact-form.reset();
-        location.reload();})
+async function data_save(e) {
+  e.preventDefault()
+  const form = document.forms['submit-to-google-sheet'];
+  const formData = new FormData(form);
+  let number_from;
+  for (let [key, value] of formData.entries()) {
+    if (key=="Number")
+    {
+      number_from=value;
+    }
+    if (key=="Name")
+    {
+      name_from=value;
+    }
+    if (key=="Gua")
+    {
+        gua_from=value;
+    }
+    if (key=="SurName")
+    {
+        surname_from=value;
+    }
+    if (key=="Product")
+    {
+      if (!value==""){
+      product_from=value;}
+      else{
+        product_from="Please Selected";
         Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+""+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>Loan Date : '+date_from+'<br>is Saved Successfully !</p>',
-        })
-        .catch(error => console.error('Error!', error.message))
-  }
-  else
-  {
-    Swal.fire({
-      icon: 'alert',
-      title: 'Please Be Careful',
-      text: 'The Loan Number '+number_from+' was not saved.!!Try Again',
-    });
-  }
+          icon: 'error',
+          title: 'Product is Not Found',
+          text: 'Product is not Selected\nPlease Ensure that.',
+        });
+        return;
+      }
+    }
+    if (key=="Address")
+    {
+      if (!value==""){
+      address_from=value;}
+      else
+      {
+        address_from="Please Selected";
+        Swal.fire({
+          icon: 'error',
+          title: 'Address is not Found',
+          text: 'Address is not Selected\nPlease Ensure that.',
+        });
+        return;
+      }
+    }
+    if (key=="Option")
+    {
+      option_from=value;
+    }
+    if (key=="LDate")
+    {
+      date_from=value;
+    }
+}
+const  result =await Swal.fire({
+    title: 'Confirm Save',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#30d65c',
+    cancelButtonColor: '#ed82a2',
+    confirmButtonText: 'Correct & Save it',
+    cancelButtonText: 'Cancel',  
+    html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+""+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>Loan Date : '+date_from+'<br>is Correct ?</p>',
 })
+if(result.isConfirmed){
+  fetch(scriptURL, { mode:'no-cors',method: 'POST', body: new FormData(form)})
+      .then(response => {console.log("Okay");
+      document.contact-form.reset();
+      location.reload();})
+      Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          html: '<p style="text-align:left;font-size:20px;">Loan Number : <strong>'+number_from+'</strong><br>Name : '+name_from+""+gua_from+" "+surname_from+'<br>Product : '+option_from+" "+product_from+'<br>Address : '+address_from+'<br>Loan Date : '+date_from+'<br>is Saved Successfully !</p>',
+      })
+      .catch(error => console.error('Error!', error.message))
+}
+else
+{
+  Swal.fire({
+    icon: 'alert',
+    title: 'Please Be Careful',
+    text: 'The Loan Number '+number_from+' was not saved.!!Try Again',
+  });
+}
+}
+const but=document.getElementById('sub')
+but.addEventListener('click',data_save())
 async function fetchData() {
   const response = await fetch(`${scriptURL}?type=json`);
   const data = await response.json();
