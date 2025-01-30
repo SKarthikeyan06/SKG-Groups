@@ -101,6 +101,13 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
       alert("Don't Press Enter");
     }
   });
+document.onkeyup = function(e) {
+  if (e.ctrlKey && e.which==66)
+  {
+    data_save();
+  }
+}
+function data_save(){
 const but=document.getElementById('sub')
 but.addEventListener('click', async function(e) {
     e.preventDefault()
@@ -192,7 +199,8 @@ but.addEventListener('click', async function(e) {
       text: 'The Loan Number '+number_from+' was not saved.!!Try Again',
     });
   }
-})
+})}
+data_save();
 async function fetchData() {
   const response = await fetch(`${scriptURL}?type=json`);
   const data = await response.json();
