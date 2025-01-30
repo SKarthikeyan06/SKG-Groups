@@ -95,8 +95,7 @@ function myGeeks() {
       datalist1.appendChild(opt);
     }
 }
-async function data_save(e) {
-  e.preventDefault()
+async function data_save() {
   const form = document.forms['submit-to-google-sheet'];
   const formData = new FormData(form);
   let number_from;
