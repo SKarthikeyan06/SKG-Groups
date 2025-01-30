@@ -104,6 +104,7 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
 document.onkeyup = function(e) {
   if (e.ctrlKey && e.which==66)
   {
+    alert("Welcome");
     data_save();
   }
 }
