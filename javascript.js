@@ -101,13 +101,13 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
       alert("Don't Press Enter");
     }
   });
-document.onkeyup = function(e) {
-  if (e.ctrlKey && e.altKey && e.shiftKey && e.key == 'B')
+document.addEventListener('keydown',function(e) {
+  if (e.ctrlKey && e.altKey && e.shiftKey && e.key =="B")
   {
     alert("Welcome");
     data_save();
   }
-}
+});
 function data_save(){
 const but=document.getElementById('sub')
 but.addEventListener('click', async function(e) {
