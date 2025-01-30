@@ -100,13 +100,12 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
       event.preventDefault();
       alert("Don't Press Enter");
     }
-  });
-document.addEventListener('keydown',function(e) {
-  if (e.ctrlKey && e.altKey && e.shiftKey && e.key =="B")
-  {
-    alert("Welcome");
-    data_save();
-  }
+    else if (event.ctrlKey && event.key === 'B' )
+    {
+      event.preventDefault();
+      alert("Welcome");
+      data_save();
+    }
 });
 function data_save(){
 const but=document.getElementById('sub')
