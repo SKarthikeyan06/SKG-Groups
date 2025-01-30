@@ -193,7 +193,6 @@ document.getElementById('fo').addEventListener('keydown', function(event) {
   else if (event.ctrlKey && event.key === 'B' )
   {
     event.preventDefault();
-    alert("Welcome");
     data_save();
   }
 });
